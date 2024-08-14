@@ -1,12 +1,11 @@
-# Name: Le Thao Nhi Nguyen
-# Student Number: N11527293
-# Question 3 - Assignment 1 - IFN647
-
 # Import necessary libraries
 import os, glob, string, re, math
-from stemming.porter2 import stem
+from nltk.stem import PorterStemmer
 from Q1 import parse_rcv1v2, parse_query
 from Q2 import my_df
+
+# Initialize the PorterStemmer
+stemmer = PorterStemmer()
 
 # Task 3.1 Question 3
 # Function to calculate and return the average document length in the collection
