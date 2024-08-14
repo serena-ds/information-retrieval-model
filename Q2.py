@@ -1,11 +1,10 @@
-# Name: Le Thao Nhi Nguyen
-# Student Number: N11527293
-# Question 2 - Assignment 1 - IFN647
-
 # Import necessary libraries
 import os, glob, string, re, math
-from stemming.porter2 import stem
+from nltk.stem import PorterStemmer
 from Q1 import parse_rcv1v2, parse_query
+
+# Initialize the PorterStemmer
+stemmer = PorterStemmer()
 
 # Task 2.1 Question 2
 # Function to calculate df of the collection and return a {term:df,...} dictionary
