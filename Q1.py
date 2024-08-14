@@ -1,10 +1,9 @@
-# Name: Le Thao Nhi Nguyen
-# Student Number: N11527293
-# Question 1 - Assignment 1 - IFN647
-
 # Import necessary libraries
 import os, glob, string, re
-from stemming.porter2 import stem
+from nltk.stem import PorterStemmer
+
+# Initialize the PorterStemmer
+stemmer = PorterStemmer()
 
 # Task 1.1 Question 1
 # Define a class to represent a document
@@ -73,7 +72,7 @@ def parse_rcv1v2(inputpath, stop_words):
                     
                     for term in line.split():
                         rcv1_doc.doc_len += 1  # Calculate document length
-                        term = stem(term.lower())  # Stem the term and convert it to lowercase
+                        term = stemmer.stem(term.lower())  # Stem the term and convert it to lowercase
                         # If the term has more than two characters and not in the given stopping words list, add new term or increase term frequency when the term occurs again
                         if (len(term) > 2) and (term not in stop_words):
                             rcv1_doc.add_term(term)
@@ -97,7 +96,7 @@ def parse_query(query0, stop_words):
     words = re.sub("\s+", " ", words).split()
     
     for term in words:
-        term = stem(term.lower())
+        term = stemmer.stem(term.lower())
         if len(term) > 2 and term not in stop_words:
             try:
                 dict_query[term] += 1
